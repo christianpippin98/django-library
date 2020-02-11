@@ -1,4 +1,4 @@
-{% for book in the_list_of_books %}
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,12 +8,13 @@
   <body>
     <h1>Books</h1>
 
+    <a class="add-book" href="{% url 'libraryapp:book_form' %}">Add Book to Inventory</a>
+
     <ol>
     {% for book in all_books %}
         <li>
-            {{ book.title }}
-            by {{book.author}}
-            published in {{book.year_published}}
+            <a href="{% url 'libraryapp:book' book.id %}"> {{ book.title }} </a>
+            by {{book.author}} published in {{book.published}}
         </li>
     {% endfor %}
     </ol>
